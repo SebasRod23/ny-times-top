@@ -46,12 +46,9 @@ class MainActivity : AppCompatActivity() {
                     Log.i("Books", results.results?.books.toString())
 
                     recyclerView = findViewById<RecyclerView>(R.id.recycler_view).apply {
-
-                        /*
-                        * Completa el código y crea el adapter.
-                        * */
-
-
+                        myAdapter = BooksAdapter(results.results?.books)
+                        this.adapter = myAdapter
+                        this.layoutManager = manager
                     }
 
                 } else {

@@ -1,11 +1,4 @@
-package edu.itesm.nytimes
-
-import com.google.gson.annotations.SerializedName
-
-
-data class Results(
-    @SerializedName("results") var results: Books?
-)
+package edu.itesm.nytimes.data
 
 data class Books(
     var books: List<Book>

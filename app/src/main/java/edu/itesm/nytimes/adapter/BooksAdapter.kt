@@ -1,4 +1,4 @@
-package edu.itesm.nytimes
+package edu.itesm.nytimes.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +7,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import edu.itesm.nytimes.R
+import edu.itesm.nytimes.data.Book
 
-class BooksAdapter(private val data: List<Book>?) : RecyclerView.Adapter<BooksAdapter.ViewHolder>()  {
+class BooksAdapter(private var data: List<Book>?) : RecyclerView.Adapter<BooksAdapter.ViewHolder>()  {
+    fun setBooks(books: List<Book>) {
+        data = books
+    }
 
-    class ViewHolder(val view: View): RecyclerView.ViewHolder(view){
+    class ViewHolder(private val view: View): RecyclerView.ViewHolder(view){
 
         fun bind(property: Book){
             val title = view.findViewById<TextView>(R.id.tvTitle)
@@ -22,7 +27,6 @@ class BooksAdapter(private val data: List<Book>?) : RecyclerView.Adapter<BooksAd
 
             Glide.with(view.context)
                 .load(property.book_image)
-                .circleCrop()
                 .into(imageView)
         }
     }
@@ -39,5 +43,4 @@ class BooksAdapter(private val data: List<Book>?) : RecyclerView.Adapter<BooksAd
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(data!![position])
     }
-
 }
